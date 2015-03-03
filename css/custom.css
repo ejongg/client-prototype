@@ -1,0 +1,25 @@
+.container {
+    margin-top : 10px;
+}
+
+.content {
+    margin-top: 12px;
+    margin-left : 15px;
+}
+
+.button {
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.view-content {
+    margin-top: 12px;
+}
+
+.order-list {
+    margin-top : 10px;
+}
+
+.order-list > .col-md-2 {
+    padding: 0px;
+}

@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-3">
+      
+       <a class="btn btn-default" ui-sref="customers">
+           <span class="glyphicon glyphicon-user"></span>
+       </a>
+       
+       <a class="btn btn-default" ui-sref="orders">
+           <span class="glyphicon glyphicon-plus"></span>
+       </a>
+       
+       <a class="btn btn-default" ui-sref="orders_view">
+           <span class="glyphicon glyphicon-list-alt"></span>
+       </a>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-9 view-content">
+        <p>Click on a row to see details</p>
+        <table class="table table-hover">
+            <tr>
+                <th>Establishment</th>
+                <th>Owner</th>
+                <th>Address</th>
+                <th>Distance rating</th>
+            </tr>
+            <tr ng-click="getOrders(customer.id)"  ng-repeat="customer in customers">
+                <th>{{customer.establishment_name}}</th>
+                <th>{{customer.owner_name}}</th>
+                <th>{{customer.address}}</th>
+                <th>{{customer.distance_rating}}</th>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="col-md-3">
+        <table class="table table-hover well">
+            <tr>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+            <tr ng-repeat="order in orders">
+                <td>{{order.date_received}}</td>
+                <td>{{order.status}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
