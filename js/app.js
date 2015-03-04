@@ -1,12 +1,12 @@
 angular.module("Client", ['ui.router'])
     .config(function($stateProvider, $urlRouterProvider){
-        $urlRouterProvider.otherwise('home');
+        $urlRouterProvider.otherwise('inventory');
 
         $stateProvider
-            .state('home', {
-                url : "/home",
-                templateUrl : "/templates/home.html",
-                controller : "HomeCtrl"
+            .state('sku', {
+                url : "/sku",
+                templateUrl : "/templates/sku.html",
+                controller : "SkuCtrl"
             })
             
             .state('inventory', {
@@ -43,5 +43,11 @@ angular.module("Client", ['ui.router'])
                 url : "/orders/view",
                 templateUrl : "/templates/orders-view.html",
                 controller : "OrdersViewCtrl"
+            })
+        
+            .state('trucks', {
+                url : "/trucks",
+                templateUrl : "/templates/trucks.html",
+                controller : "TrucksCtrl"
             })
     })
