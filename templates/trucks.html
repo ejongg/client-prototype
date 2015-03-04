@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <input ng-model="driver" type="text" class="form-control" placeholder="Truck Driver">
+        </div>
+        
+        <div class="form-group">
+            <input ng-model="dispatcher" type="text" class="form-control" placeholder="Dispatcher">
+        </div>
+        
+        <div class="form-group">
+            <input ng-model="agent" type="text" class="form-control" placeholder="Agent">
+        </div>
+        
+        <div class="form-group">
+            <input ng-model="helper" type="text" class="form-control" placeholder="Helper">
+        </div>
+        
+        <div class="form-group">
+            <input ng-model="route" type="text" class="form-control" placeholder="Route">
+        </div>
+        
+        <div ng-click="addTruck()" class="btn btn-default pull-right">Assign</div>
+    </div>
+    
+    <div class="col-md-9">
+       <div class="panel panel-default">
+           <div class="panel-heading">Click a row to re assign personnels</div>
+           
+           <div class="panel-body">
+               <table class="table table-hover">
+                <tr>
+                    <th>Truck #</th>
+                    <th>Driver</th>
+                    <th>Dispatcher</th>
+                    <th>Agent</th>
+                    <th>Helper</th>
+                    <th>Route</th>
+                </tr>
+                <tr ng-repeat="truck in trucks">
+                    <td>{{truck.id}}</td>
+                    <td>{{truck.driver}}</td>
+                    <td>{{truck.dispatcher}}</td>
+                    <td>{{truck.agent}}</td>
+                    <td>{{truck.helper}}</td>
+                    <td>{{truck.route}}</td>
+                </tr>
+               </table>
+           </div>
+       </div>
+    </div>
+</div>
