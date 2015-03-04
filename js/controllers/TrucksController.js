@@ -2,6 +2,10 @@ angular.module('Client')
     .controller("TrucksCtrl", ['$http', '$log', '$scope', function($http, $log, $scope){
         $scope.trucks = [];
         
+        /**
+        *   Send a get request to the server then
+        *   populate the trucks table
+        */
         $scope.getTrucks = function(){
             io.socket.get('/trucks');
             
@@ -11,6 +15,10 @@ angular.module('Client')
                 });
         };
         
+        
+        /**
+        *   Invoke the function above
+        */
         $scope.getTrucks();
         
         io.socket.on('trucks', function(msg){

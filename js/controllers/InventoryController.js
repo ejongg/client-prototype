@@ -6,19 +6,30 @@ angular.module('Client')
         
         $scope.add = true;
         
-        // Populate the dropdown for bays
+        /**
+        *   Send a get request to the server
+        *   then populate the select element for bays.
+        */ 
         $http.get('http://localhost:1337/bays')
             .success(function(data){
                 $scope.bays = data;
                 $scope.baySelected = $scope.bays[0];
         });
-        // Populate the dropdown for SKU
+        
+        /**
+        *   Send a get request to the server
+        *   then populate the select element for sku.
+        */
         $http.get('http://localhost:1337/sku')
             .success(function(data){
                 $scope.skus = data;
                 $scope.skuSelected = $scope.skus[0];
         });
         
+        /**
+        *   Subscribe to the inventory model and get
+        *   the current records in the model
+        */ 
         $scope.getInventory = function(){
             io.socket.get('/inventory');
             
@@ -28,9 +39,14 @@ angular.module('Client')
             });
         };
         
+        
         $scope.getInventory();
         
-        // Listen for any changes in Inventory model
+        /**
+        *   Listen for any changes in Inventory model
+        *   then push it to the array and use digest() 
+        *   to updated the interface
+        */ 
         io.socket.on('inventory', function(msg){
             $log.info(msg);
             switch (msg.verb){
@@ -47,7 +63,10 @@ angular.module('Client')
             }
         });
         
-        // This function adds a new item to the inventory
+        /**
+        *   This function adds a new item to the inventory.
+        *   Note: Send an object where the key is named "item".
+        */ 
         $scope.addItem = function (bay_id, sku_id) {
             var item = {
                 bay_id : bay_id,
@@ -65,7 +84,10 @@ angular.module('Client')
             $scope.item_id = id;
         };
         
-        // Send a request to the server only the cases is required
+        /**
+        *   Send a request to the server to update the number
+        *   of cases for the particular item in the inventory
+        */ 
         $scope.replenish = function(id){        
             io.socket.put('/inventory/replenish/' + id, {cases : $scope.cases});
         };
