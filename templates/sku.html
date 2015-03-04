@@ -1,0 +1,43 @@
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            <select ng-model="productSelected" ng-options="product.prod_name group by product.company for product in products" class="form-control"></select>
+        </div>
+
+        <div class="form-group">
+            <input ng-model="sku_name" class="form-control" type="text" placeholder="SKU name">
+        </div>
+        <div class="form-group">
+            <input ng-model="bottlespercase" class="form-control" type="text" placeholder="Bottles per case">
+        </div>
+        <div class="form-group">
+            <input ng-model="size" class="form-control" type="text" placeholder="Size">
+        </div>
+        <div class="form-group">
+            <input ng-model="price" class="form-control" type="text" placeholder="Price">
+        </div>
+
+        <div ng-click="addSKU(productSelected.id)" class="btn btn-default">Add</div>
+    </div>
+    <div class="col-md-9">
+        <table class="table">
+            <tr>
+                <th>Product Name</th>
+                <th>SKU Name</th>
+                <th>Bottles/Case</th>
+                <th>Company</th>
+                <th>Size</th>
+                <th>Price</th>
+            </tr>
+            <tr ng-repeat="sku in skus">
+                <td>{{sku.prod_id.prod_name}}</td>
+                <td>{{sku.sku_name}}</td>
+                <td>{{sku.bottlespercase}}</td>
+                <td>{{sku.prod_id.company}}</td>
+                <td>{{sku.size}}</td>
+                <td>{{sku.price}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
