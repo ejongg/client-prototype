@@ -50,4 +50,22 @@ angular.module("Client", ['ui.router'])
                 templateUrl : "/templates/trucks.html",
                 controller : "TrucksCtrl"
             })
+        
+            .state('delivery', {
+                url : "/delivery",
+                templateUrl : "/templates/delivery.html",
+                controller : "DeliveryCtrl"
+            })
+        
+            .state('purchases', {
+                url : "/purchases",
+                templateUrl : "/templates/purchases.html",
+                controller : "PurchaseCtrl"
+            })
+        
+            .state('purchases_view', {
+                url : "/purchases/view",
+                templateUrl : "/templates/purchases-view.html",
+                controller : "PurchasesViewCtrl"
+            })
     })

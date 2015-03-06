@@ -1,38 +1,5 @@
 <div class="row">
-    <div class="col-md-3">
-      <div id="add" ng-show="add">
-        <div class="form-group">
-        <select ng-model="baySelected" ng-options="'Bay ' + bay.pile_name for bay in bays" class="form-control"></select>
-        </div>
-        
-        <div class="form-group">
-        <select ng-model="skuSelected" ng-options="sku.sku_name group by sku.prod_id.company for sku in skus" class="form-control"></select>
-        </div>
-        
-        <div class="form-group">
-            <input ng-model="exp_date" placeholder="Exp. Date" type="text" class="form-control">
-        </div>
-        
-        <div class="form-group">
-            <input ng-model="cases" placeholder="Case" type="text" class="form-control">
-        </div>
-        
-        <div ng-click="addItem(baySelected.id, skuSelected.id)" class="btn btn-default pull-right">Add</div>
-      </div>
-      
-      <div ng-hide="add" id="replenish">
-          <div class="form-group">
-              <input ng-model="cases" placeholder="Cases to add" type="text" class="form-control">
-          </div>
-          
-          <div ng-click="replenish(item_id)" class="btn btn-default pull-right">Replenish</div>
-          
-          <div ng-click="cancel()" class="btn btn-default">Cancel</div>
-      </div>
-       
-    </div>
-    
-    <div class="col-md-9">
+    <div class="col-md-12">
         <table class="table table-hover">
             <p>Click a row to replenish</p>
             <tr>

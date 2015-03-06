@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-3">
+       
+       <a class="btn btn-default" ui-sref="purchases">
+           <span class="glyphicon glyphicon-plus"></span>
+       </a>
+       
+       <a class="btn btn-default" ui-sref="purchases_view">
+           <span class="glyphicon glyphicon-list-alt"></span>
+       </a>
+  </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-9">
+        <table class="table table-hover">
+            <tr>
+                <th>Purchase #</th>
+                <th>Date Received</th>
+                <th>Total Cost</th>
+                <th>User</th>
+            </tr>
+            <tr ng-click="viewDetails(purchase.id)" ng-repeat="purchase in purchases">
+                <td>{{purchase.id}}</td>
+                <td>{{purchase.date_received}}</td>
+                <td>{{purchase.total_cost}}</td>
+                <td>{{purchase.user}}</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="col-md-3">
+        <table class="table table-hover">
+            <tr>
+                <th>Sku</th>
+                <th>Cases</th>
+            </tr>
+            <tr ng-repeat="item in purchase_products">
+                <td>{{item.sku_id.sku_name}}</td>
+                <td>{{item.cases}}</td>
+            </tr>        
+        </table>
+    </div>
+</div>

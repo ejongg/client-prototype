@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-3">
+       
+       <a class="btn btn-default" ui-sref="purchases">
+           <span class="glyphicon glyphicon-plus"></span>
+       </a>
+       
+       <a class="btn btn-default" ui-sref="purchases_view">
+           <span class="glyphicon glyphicon-list-alt"></span>
+       </a>
+       
+  </div>
+</div>
+
+<div class="row view-content">
+   <div class="col-md-3">
+       <div class="form-group">
+           <select ng-model="selectedBay" ng-options="'Bay ' + bay.pile_name for bay in bays" class="form-control">              </select>
+       </div> 
+          
+       <div class="form-group">
+           <select ng-model="selectedSku" ng-options="sku.sku_name for sku in skus" class="form-control"></select>
+       </div>
+       
+       <div class="form-group">
+           <input ng-model="cases" type="text" class="form-control" placeholder="Cases">
+       </div>
+       
+       <div class="form-group">
+           <input ng-model="prod_date" type="text" class="form-control" placeholder="Production date">
+       </div>
+       
+       <div ng-click="addPurchase()" class="btn btn-default pull-right">Add</div>
+   </div>
+    <div class="col-md-9">
+        <table class="table table-hover">
+            <tr>
+                <th>Sku</th>
+                <th>Company</th>
+                <th>Cases</th>
+                <th>Bay</th>
+                <th>Production date</th>
+            </tr>
+            <tr ng-repeat="item in purchases">
+                <td>{{item.name}}</td>
+                <td>{{item.company}}</td>
+                <td>{{item.cases}}</td>
+                <td>{{item.bay}}</td>
+                <td>{{item.prod_date}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+   
+
+<div class="row content">
+    <div class="col-md-12"> 
+        <div class="form-inline pull-right">
+            <div class="form-group">
+                <input required ng-model="cost" type="text" class="form-control" placeholder="Total Cost">
+            </div>
+            
+            <div ng-click="finalizePurchase()" class="btn btn-primary">Done</div>
+       </div>
+    </div>
+</div>

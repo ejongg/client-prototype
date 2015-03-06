@@ -14,6 +14,7 @@ angular.module('Client')
         $scope.getOrders();
         
         io.socket.on('customer_orders', function(msg){
+            $log.info(msg);
             switch(msg.verb){
                 case 'created':
                     $scope.ordersList.push(msg.data);

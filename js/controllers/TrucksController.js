@@ -1,6 +1,8 @@
 angular.module('Client')
     .controller("TrucksCtrl", ['$http', '$log', '$scope', function($http, $log, $scope){
         $scope.trucks = [];
+        $scope.selectedTruck = null;
+        $scope.add = true;
         
         /**
         *   Send a get request to the server then
@@ -27,6 +29,15 @@ angular.module('Client')
                     $scope.trucks.push(msg.data);
                     $scope.$digest();
                     break;
+                    
+                case 'updated' :
+                    var updated = msg.data;
+                    var index = _.findIndex($scope.trucks, {id : updated.id});
+                    
+                    $scope.trucks[index] = msg.data; 
+                    $scope.$digest();
+                    
+                    $scope.add = true;
             }
         });
         
@@ -41,4 +52,36 @@ angular.module('Client')
             
             io.socket.post('/trucks', truck);
         };
-    }])
+        
+        $scope.selectTruck = function(id){
+            $scope.selectedTruck = id;
+            $scope.add = false;
+            
+            var index = _.findIndex($scope.trucks, {id : id});
+            var truck = $scope.trucks[index];
+            
+            $scope.driver = truck.driver;
+            $scope.dispatcher = truck.dispatcher;
+            $scope.agent = truck.agent;
+            $scope.helper = truck.helper;
+            $scope.route = truck.route;
+        };
+        
+        $scope.reassign = function(){
+            var truck = {
+                driver : $scope.driver,
+                dispatcher : $scope.dispatcher,
+                agent : $scope.agent,
+                helper : $scope.helper,
+                route : $scope.route
+            };
+            
+            io.socket.put('/trucks/' + $scope.selectedTruck, truck);
+            $scope.selectedTruck = null;
+        };
+        
+        $scope.cancel = function(){
+            $scope.add = true;
+        };
+        
+    }]);
