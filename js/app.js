@@ -75,6 +75,12 @@ angular.module("Client", ['ui.router'])
                 controller : "POSCtrl"
             })
         
+            .state('warehouse_sales', {
+                url : "/warehouse-sales",
+                templateUrl : "/templates/warehouse-sales.html",
+                controller : "WarehouseSalesCtrl"
+            })
+        
             .state('bad_orders', {
                 url : "/bad-orders",
                 templateUrl : "templates/bad-orders.html",

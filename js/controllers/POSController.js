@@ -3,6 +3,7 @@ angular.module('Client')
         $scope.skus = [];
         $scope.products = [];
         $scope.returns = [];
+        $scope.show_alert = false;
         $scope.total_amount = 0;
         
         $scope.getSku = function(){
@@ -56,7 +57,15 @@ angular.module('Client')
             };
             
             io.socket.post('/warehouse_transactions/add', transaction, function(response){
-                $log.info(response);
+                if(response.code == 1){
+                    $scope.alert = "alert alert-success alert-dismissible";
+                }else{
+                    $scope.alert = "alert alert-danger alert-dismissible";
+                }
+                
+                $scope.message = response.message;
+                $scope.show_alert = true;
+                $scope.$digest();
             });
         };
     }]);
