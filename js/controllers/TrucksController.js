@@ -47,7 +47,8 @@ angular.module('Client')
                 dispatcher : $scope.dispatcher,
                 agent : $scope.agent,
                 helper : $scope.helper,
-                route : $scope.route
+                route : $scope.route,
+                carry_weight : $scope.carry_weight
             };
             
             io.socket.post('/trucks', truck);
@@ -73,12 +74,17 @@ angular.module('Client')
                 dispatcher : $scope.dispatcher,
                 agent : $scope.agent,
                 helper : $scope.helper,
-                route : $scope.route
+                route : $scope.route,
+                carry_weight : $scope.carry_weight
             };
             
             io.socket.put('/trucks/' + $scope.selectedTruck, truck);
             $scope.selectedTruck = null;
         };
+        
+        $scope.test = function(){
+            io.socket.post('/customer_orders/test');
+        }
         
         $scope.cancel = function(){
             $scope.add = true;

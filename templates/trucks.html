@@ -20,7 +20,13 @@
             <input ng-model="route" type="text" class="form-control" placeholder="Route">
         </div>
         
+        <div class="form-group">
+            <input ng-model="carry_weight" type="text" class="form-control" placeholder="Carry weight">
+        </div>
+        
         <div ng-show="add" ng-click="addTruck()" class="btn btn-default pull-right">Assign</div>
+        
+        <div ng-show="add" ng-click="test()" class="btn btn-default">Test</div>
         
         <div ng-hide="add" ng-click="reassign()" class="btn btn-default  pull-right">Re-assign</div>
         
@@ -40,6 +46,8 @@
                     <th>Agent</th>
                     <th>Helper</th>
                     <th>Route</th>
+                    <th>Carry Weight</th>
+                    <th>Current Load</th>
                 </tr>
                 <tr ng-click="selectTruck(truck.id)" ng-repeat="truck in trucks">
                     <td>{{truck.id}}</td>
@@ -48,6 +56,8 @@
                     <td>{{truck.agent}}</td>
                     <td>{{truck.helper}}</td>
                     <td>{{truck.route}}</td>
+                    <td>{{truck.carry_weight}}</td>
+                    <td>{{truck.current_load_weight}}</td>
                 </tr>
                </table>
            </div>

@@ -68,4 +68,10 @@ angular.module("Client", ['ui.router'])
                 templateUrl : "/templates/purchases-view.html",
                 controller : "PurchasesViewCtrl"
             })
+        
+            .state('pos', {
+                url : "/pos",
+                templateUrl : "/templates/pos.html",
+                controller : "POSCtrl"
+            })
     })

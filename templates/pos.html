@@ -1,0 +1,92 @@
+<div class="row" style="margin-bottom : 5px">
+   <div class="col-md-12">
+    <div class="form-inline">
+        <div class="form-group">
+            <input ng-model="customer_name" type="text" class="form-control" placeholder="Customer name">
+        </div>
+        
+        <div ng-click="finalizeTransaction()" class="btn btn-primary pull-right">Done</div>
+    </div>
+   </div>   
+</div>
+
+<hr>
+<h4>Transaction Items</h4>
+<hr>
+<div class="row content-view">
+    <div class="col-md-3">
+        <div class="well well-sm">{{total_amount | currency : '₱'}}</div>
+        <div class="form-group">
+            <select ng-model="selectedSku" class="form-control" ng-options="sku.sku_name for sku in skus">
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <input ng-model="trans_bottles" type="text" class="form-control" placeholder="Bottles">
+        </div>
+        
+        <div class="form-group">
+            <input ng-model="trans_cases" type="text" class="form-control" placeholder="Cases">
+        </div>
+        
+        <div ng-click="addTransItem()" class="btn btn-default pull-right">Add</div>
+    </div>
+    
+    <div class="col-md-9">
+        <table class="table table-hover">
+            <tr>
+                <th>Sku name</th>
+                <th>Bottles</th>
+                <th>Cases</th>
+            </tr>
+            <tr ng-repeat="product in products">
+                <td>{{product.sku_name}}</td>
+                <td>{{product.bottles}}</td>
+                <td>{{product.cases}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<hr>
+<h4>Returned Items</h4>
+<hr>
+<div class="row content-view">
+    <div class="col-md-3">
+        <div class="form-group">
+            <select ng-model="selectedSku" class="form-control" ng-options="sku.sku_name for sku in skus">
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <input ng-model="return_bottles" type="text" class="form-control" placeholder="Bottles">
+        </div>
+        
+        <div class="form-group">
+            <input ng-model="return_cases" type="text" class="form-control" placeholder="Cases">
+        </div>
+        
+        <div class="form-group">
+            <input ng-model="return_deposit" type="text" class="form-control" placeholder="Deposit">
+        </div>
+        
+        <div ng-click="addReturns()" class="btn btn-default pull-right">Add</div>
+    </div>
+    
+    <div class="col-md-9">
+        <table class="table table-hover">
+            <tr>
+                <th>Sku name</th>
+                <th>Bottles</th>
+                <th>Cases</th>
+                <th>Deposit</th>
+            </tr>
+            <tr ng-repeat="return in returns">
+                <td>{{return.sku_name}}</td>
+                <td>{{return.bottles}}</td>
+                <td>{{return.cases}}</td>
+                <td>{{return.deposit}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
