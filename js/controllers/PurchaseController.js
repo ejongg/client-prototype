@@ -18,7 +18,7 @@ angular.module('Client')
                 .success(function(data){
                     $scope.bays = data;
                     $scope.selectedBay = $scope.bays[0];
-                })
+                });
         };
         
         $scope.getSkusAndBays();
@@ -35,7 +35,8 @@ angular.module('Client')
                 company : $scope.selectedSku.prod_id.company,
                 bay : $scope.selectedBay.pile_name,
                 prod_date : $scope.prod_date,
-                cases : $scope.cases
+                cases : $scope.cases,
+                amount : $scope.amount
             };
             
             $scope.purchases.push(item);
@@ -46,13 +47,12 @@ angular.module('Client')
         *   please follow the keys of the objects.
         */
         $scope.finalizePurchase = function(){
-            $log.info('Hello!');
             var purchase = {
                 products : $scope.purchases,
                 total_cost : $scope.cost,
                 user : 'Sonic'
             };
             
-            io.socket.post('/purchases/add', {purchases : purchase});
+            io.socket.post('/purchases/add', purchase);
         };
     }]);

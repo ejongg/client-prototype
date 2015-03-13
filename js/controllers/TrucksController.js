@@ -24,6 +24,7 @@ angular.module('Client')
         $scope.getTrucks();
         
         io.socket.on('trucks', function(msg){
+            $log.info(msg);
             switch (msg.verb){
                 case 'created' :
                     $scope.trucks.push(msg.data);

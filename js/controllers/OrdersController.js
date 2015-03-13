@@ -52,6 +52,6 @@ angular.module('Client')
                 user : 'Sonic'
             };
             
-            io.socket.post('/customer_orders/add', {order : final_order});
+            io.socket.post('/customer_orders/add', final_order);
         };
     }])
