@@ -3,6 +3,7 @@ angular.module('Client')
         $scope.skus = [];
         $scope.purchases = [];
         $scope.bays = [];
+        $scope.total_cost = 0;
         
         $scope.getSkusAndBays = function(){
             io.socket.get('/sku');
@@ -30,15 +31,18 @@ angular.module('Client')
             */
             var item = {
                 sku_id : $scope.selectedSku.id,
-                bay_id : $scope.selectedBay.id,
-                name : $scope.selectedSku.sku_name,
-                company : $scope.selectedSku.prod_id.company,
+                bay_id : $scope.selectedBay.id,               
                 bay : $scope.selectedBay.pile_name,
                 prod_date : $scope.prod_date,
                 cases : $scope.cases,
-                amount : $scope.amount
+                amount : $scope.costpercase * $scope.cases,
+                costpercase : $scope.costpercase,
+                discountpercase : $scope.discountpercase,
+                name : $scope.selectedSku.sku_name,
+                company : $scope.selectedSku.prod_id.company,
             };
             
+            $scope.total_cost = $scope.total_cost + item.amount;
             $scope.purchases.push(item);
         };
         
@@ -49,7 +53,7 @@ angular.module('Client')
         $scope.finalizePurchase = function(){
             var purchase = {
                 products : $scope.purchases,
-                total_cost : $scope.cost,
+                total_cost : $scope.total_cost,
                 user : 'Sonic'
             };
             

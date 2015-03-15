@@ -27,7 +27,11 @@
        </div>
        
        <div class="form-group">
-           <input ng-model="amount" type="text" class="form-control" placeholder="Amount">
+           <input ng-model="costpercase" type="text" class="form-control" placeholder="Cost per case">
+       </div>
+       
+       <div class="form-group">
+           <input ng-model="discountpercase" type="text" class="form-control" placeholder="Discount per case">
        </div>
        
        <div class="form-group">
@@ -44,6 +48,9 @@
                 <th>Cases</th>
                 <th>Bay</th>
                 <th>Production date</th>
+                <th>Cost per case</th>
+                <th>Discount per case</th>
+                <th>Amount</th>
             </tr>
             <tr ng-repeat="item in purchases">
                 <td>{{item.name}}</td>
@@ -51,6 +58,9 @@
                 <td>{{item.cases}}</td>
                 <td>{{item.bay}}</td>
                 <td>{{item.prod_date}}</td>
+                <td>{{item.costpercase}}</td>
+                <td>{{item.discountpercase}}</td>
+                <td>{{item.amount}}</td>
             </tr>
         </table>
     </div>
@@ -61,7 +71,7 @@
     <div class="col-md-12"> 
         <div class="form-inline pull-right">
             <div class="form-group">
-                <input required ng-model="cost" type="text" class="form-control" placeholder="Total Cost">
+                <input disabled ng-model="total_cost" type="text" class="form-control" placeholder="Total Cost">
             </div>
             
             <div ng-click="finalizePurchase()" class="btn btn-primary">Done</div>
