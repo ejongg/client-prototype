@@ -23,6 +23,7 @@ angular.module('Client')
             var item = {
                 sku_id : $scope.selectedSku.id,
                 sku_name : $scope.selectedSku.sku_name,
+                bottlespercase : $scope.selectedSku.bottlespercase,
                 bottles : $scope.trans_bottles,
                 cases : $scope.trans_cases
             };
@@ -67,5 +68,11 @@ angular.module('Client')
                 $scope.show_alert = true;
                 $scope.$digest();
             });
+        };
+        
+        $scope.clear = function (){
+            $scope.products = [];
+            $scope.show_alert = false;
+            $scope.$digest();     
         };
     }]);

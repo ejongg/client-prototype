@@ -7,16 +7,18 @@
                 <th>Sku</th>
                 <th>Exp. date</th>
                 <th>Age</th>
+                <th>Bottles</th>
                 <th>P. Count</th>
                 <th>L. Count</th>
             </tr>
             <tr ng-click="selectToReplenish(item.id)" ng-repeat="item in inventory">
-                <th>{{item.bay_id.pile_name}}</th>
-                <th>{{item.sku_id.sku_name}}</th>
-                <th>{{item.exp_date}}</th>
-                <th>{{item.age}}</th>
-                <th>{{item.physical_count}}</th>
-                <th>{{item.logical_count}}</th>
+                <td>{{item.bay_id.pile_name}}</td>
+                <td>{{item.sku_id.sku_name}}</td>
+                <td>{{item.exp_date}}</td>
+                <td>{{item.age}}</td>
+                <td>{{item.bottles}}</td>
+                <td>{{item.physical_count}}</td>
+                <td>{{item.logical_count}}</td>
             </tr>
         </table>
     </div>
