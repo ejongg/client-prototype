@@ -29,6 +29,7 @@ angular.module('Client')
                 sku_id : $scope.selectedSku.id,
                 bay_id : $scope.selectedBay.id,
                 sku_name : $scope.selectedSku.sku_name,
+                bottlespercase : $scope.selectedSku.bottlespercase,
                 expense : $scope.cases * ($scope.selectedSku.price * $scope.selectedSku.bottlespercase),
                 cases : $scope.cases,
                 reason : $scope.reason,
